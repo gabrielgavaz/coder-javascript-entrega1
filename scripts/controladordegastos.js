@@ -2,13 +2,13 @@ let restante = 0;
 
 const guardarPresupuesto = () => {
   let presupuesto = parseInt(document.querySelector("#presupuestoInicial").value);
-  restante = presupuesto;
-  if (presupuesto < 1 || isNaN(presupuesto)) {
+  restante = presupuesto; // Se asigna el presupuesto inicial a la variable restante
+  if (presupuesto < 1 || isNaN(presupuesto)) { // Verifica si el presupuesto es válido
     mostrarError("#msj_error_pregunta", "Cantidad No Válida");
     return;
   }
-  localStorage.setItem("presupuesto", presupuesto);
-  localStorage.setItem("gastos", JSON.stringify([]));
+  localStorage.setItem("presupuesto", presupuesto); // Guardamos el presupuesto en el almacenamiento local
+  localStorage.setItem("gastos", JSON.stringify([])); // Guardamos un array vacio que luego setra completado
 
   actualizarVista();
 }
@@ -33,9 +33,9 @@ const actualizarVista = () => {
                     </div>`;
 
   if (!presupuesto) {
-    divPregunta.style.display = "block";
+    divPregunta.style.display = "block"; // Si no hay presupuesto guardado, muestra la sección del presupuesto para ingresar el dinero total que tenemos
   } else {
-    divPregunta.style.display = "none";
+    divPregunta.style.display = "none"; // aqui es lo que ocurre si hay ya un presupuesto establecio y guardado en el local
     divGastos.style.display = "flex";
     divControlGastos.innerHTML = controlGastos;
     refrescarListado();
@@ -46,7 +46,7 @@ const agregarGasto = () => {
   let tipoGasto = document.querySelector("#tipoGasto").value;
   let cantidadGasto = parseInt(document.querySelector("#cantidadGasto").value);
 
-  if (cantidadGasto < 1 || isNaN(cantidadGasto) || tipoGasto.trim() === '' || !/^[a-zA-Z]+$/.test(tipoGasto)) {
+  if (cantidadGasto < 1 || isNaN(cantidadGasto) || tipoGasto.trim() === '' || !/^[a-zA-Z]+$/.test(tipoGasto)) {  //verificaom que los datos entrantes son validos
     mostrarError("#msj_error_crearGasto", "ERROR EN CAMPOS");
     return;
   }
