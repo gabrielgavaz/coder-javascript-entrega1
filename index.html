@@ -4,15 +4,62 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital@1&display=swap" rel="stylesheet">
     <link rel="preload" href="./css/css.css" as="style">
     <link rel="stylesheet" href="./css/css.css">
     
     <title>Document</title>
 </head>
-<body>
-    <header>
-        <h1>Gestor de datos</h1>
-    </header>
+<body onload="actualizarVista()">
+    <div class="container">
+        <header>
+            <h1>Gestor de gastos personales</h1>
+            <div class="contenido-principal">
+                <div class="row">
+                    <div class=".full-width" id="pregunta">
+                        <h2>Coloca tu presupuesto</h2>
+                        <div id="msj_error_pregunta"></div>
+                        <form class="fomularioPresupuesto" action="">
+                            <input type="number" id="presupuestoInicial" class="primerBoton" placeholder="coloca tu presupuesto">
+                            <input type="button" onclick="guardarPresupuesto()" class="botonPrincipal full-width" value="crear presupuesto">
+                        </form>
+                    </div>
+
+                    <div class="divGastos" id="divGastos">
+
+                        <div class="primeraColuma">
+
+                            <div id="divCrearGasto">
+
+                                <form id="formGasto">
+
+                                    <h2>Agrega tus gastos aqui</h2>
+                                    <div id="msj_error_crearGasto"></div>
+
+                                    <div class="campo">
+                                        <label for="tipoGasto">Nombre Gasto</label>
+                                        <input type="text" class="full-width" placeholder="Ej. Educacion" id="tipoGasto">
+                                    </div>
+
+                                    <div class="campo">
+                                        <label for="cantidadGasto">Cantidad Gastado</label>
+                                        <input type="number" class="full-width" placeholder="Ej. 1300" id="cantidadGasto">
+                                    </div>
+                                    <input type="button" onclick="agregarGasto()" class="botonPrincipal full-width" value="Agregar Gasto">
+                                </form>
+                            </div>
+                            
+                        </div>
+
+                        <div class="segundaColumna" id="divControlGastos"></div>
+                        
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
 
 
 

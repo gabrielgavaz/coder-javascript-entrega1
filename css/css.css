@@ -1,14 +1,185 @@
-body{
-    background-color: blanchedalmond;
+:root{
+    --colorbg: #56704b;
+    --colorinterior:#fad9a6;
+    --colorborde: #524835;
+    --negro: #000;
+    --blanco: #fff;
+
+    --fuentePrincipal:'Rubik', sans-serif;
+
 }
-header{
+
+
+/* colores 
+para el borde: #524835;
+para el interior: #fad9a6
+*/
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  body {
+    background-color: var(--colorbg);
+    background-image: linear-gradient(to right, var(--colorbg), #2c3d25); 
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    margin: 0;
+  }
+  
+  .container {
+    width: 70%;
+    background-color: var(--colorinterior);
+    border: 5px solid var(--colorborde);
+    padding: 30px;
+    overflow: auto;
+    border-radius: 2rem;
+  }
+
+  h1,h2,h3,input,label{
+    font-family: var(--fuentePrincipal);
+    text-align: center;
+  }
+  h1{
+    font-size: 5rem ;
+  }
+  h2{
+    font-size: 3.5rem;
+  }
+  .full-width{
+    width: 100%;
+  }
+
+
+
+.fomularioPresupuesto{
+    display: flex;
+    flex-direction: column;
+    row-gap: 3rem;
 }
 
-header h1{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 3rem;
+
+/* boton principal */
+input,button{
+  padding: .5rem;
+  height: 5rem;
+  font-size: 2rem;
+  border: 0;
+  border-radius: 1rem;
+  transition: border 100ms;
+}
+
+input:hover {
+  border: .2rem solid var(--colorborde); /* Aplica el estilo de borde en el estado de hover */
+}
+  
+/* columnas*/
+
+#pregunta{
+}
+
+.divGastos{
+ justify-content: space-between;
+ column-gap: 3rem;
+
+}
+
+.primeraColuma,
+.segundaColumna{
+  flex-basis: 50%;
+}
+
+#formGasto{
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+label{
+  font-size: 3rem;
+}
+
+
+
+/* segunda columna*/
+.gastos {
+  list-style-type: none;
+  margin: 0;
+  font-family: var(--fuentePrincipal);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding-bottom: 10px; 
+  margin-bottom: 3rem;
+}
+
+.gastos::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%); /* Centrar horizontalmente */
+  width: 80%;
+  height: 1px;
+  background-color: #524835;
+}
+.parrafoTipoGasto,.parrafoCantidadGasto, .alert{
+  font-size: 3rem;
+  margin: 0;
+  text-transform: uppercase;
+  font-family: var(--fuentePrincipal);
+}
+
+
+
+
+
+/* ultima parte*/
+.gastos-realizados{
+
+}
+
+
+/* errores */
+
+#msj_error_pregunta,
+#msj_error_crearGasto{
+  background-color: rgba(255, 0, 0, 0.5);
+  font-size: 1.5rem;
+  font-family: var(--fuentePrincipal);
+  border-radius: 1rem;
+  text-align: center;
+}
+
+.alerta-naranja,.alerta-rojo,.alerta-verde{
+  font-size: 3rem;
+  margin: 0;
+  text-transform: uppercase;
+  font-family: var(--fuentePrincipal);
+  border-radius: 3px;
+}
+.alerta-rojo{
+  background-color: rgba(255, 0, 0, 0.1);
+  color: red;
+}
+.alerta-naranja{
+  color: orange;
+  background-color: rgba(255, 165, 0, 0.1);
+}
+.alerta-verde{
+  color: green;
+  background-color: rgba(0, 128, 0, 0.1);
+}
+
+
+/* auxiliares */
+
+.mr-top{
+  margin-top: 2rem;
 }
