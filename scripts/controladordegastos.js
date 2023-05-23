@@ -72,19 +72,47 @@ const agregarGasto = () => {
   document.querySelector("#formGasto").reset();
 }
 
+
+
 const refrescarListado = () => {
   let presupuesto = parseInt(localStorage.getItem("presupuesto"));
   let gastos = JSON.parse(localStorage.getItem("gastos"));
 
+
+  let tabla = document.querySelector("#tabla");
+  if (gastos && gastos.length === 0) {
+    tabla.style.display = "block";
+  }
+
+  
   let totalGastos = 0;
   let listadoHTML = ``;
   gastos.map(gasto => {
-    listadoHTML += `<li class="gastos">
-                <p class="parrafoTipoGasto">${gasto.tipoGasto}</p>
-                <p class="parrafoCantidadGasto">$ ${gasto.cantidadGasto}</p>
-                </li>`;
+    listadoHTML +=`
+                      <tr>
+                        <td>${gasto.tipoGasto}</td>
+                        <td>${gasto.cantidadGasto}</td>
+                        <td><img src="/images/editar.png" onclick="editarFila()" class=""></td>
+                      </tr>`;
+    
+    // `<li class="gastos">
+    //             <p class="parrafoTipoGasto">${gasto.tipoGasto}</p>
+    //             <p class="parrafoCantidadGasto">$ ${gasto.cantidadGasto}</p>
+    //             </li>`;
     totalGastos += parseInt(gasto.cantidadGasto);
   });
+
+  let tablaGastos = `<table class="tabla-gastos" id="tabla">
+                      <thead>
+                        <tr>
+                          <th>Tipo de Gasto</th>
+                          <th>Cantidad</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        ${listadoHTML}
+                      </tbody>
+                    </table>`;
   console.log("total de gastos: " + totalGastos);
 
   restante = presupuesto - totalGastos;
@@ -105,7 +133,7 @@ const refrescarListado = () => {
 
   divControlGastos.innerHTML = `<div class="gastos-realizados">
                               <h2>Listado de gastos</h2>
-                              ${listadoHTML}
+                              ${tablaGastos}
                               <div class="alert alert-success">
                               Presupuesto: $ ${presupuesto}</div>
                               <div class="${clase}">

@@ -183,3 +183,20 @@ label{
 .mr-top{
   margin-top: 2rem;
 }
+img{
+  max-width: 100%;
+  display: block;
+  height: 30px;
+  cursor: pointer;
+}
+
+table{
+  width: 100%;
+}
+th{
+  text-align: left;
+  font-size: 2rem;
+}
+tr{
+  font-size: 2rem;
+}
